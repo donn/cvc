@@ -25,7 +25,7 @@
 
 #include "CCvcDb.hh"
 #include "CCircuit.hh"
-#include "obstack.h"
+#include <obstack.h>
 
 #define NOT_PARALLEL false
 

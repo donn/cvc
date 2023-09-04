@@ -60,6 +60,7 @@ extern char vv_suffix[], vv_trailer[];
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <array>
 #include <iomanip>
 #include <set>
 #include <regex>

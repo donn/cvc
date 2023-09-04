@@ -23,7 +23,7 @@
 
 #include "CFixedText.hh"
 
-#include "obstack.h"
+#include <obstack.h>
 
 
 CFixedText::CFixedText() {

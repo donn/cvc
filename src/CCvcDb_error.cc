@@ -31,6 +31,9 @@
 #include "CInstance.hh"
 #include "CEventQueue.hh"
 #include "CVirtualNet.hh"
+
+#include "tempfile.hh"
+
 #include <stdio.h>
 
 void CCvcDb::PrintFuseError(netId_t theTargetNetId, CConnection & theConnections) {
@@ -253,22 +256,28 @@ void CCvcDb::PrintModelError(ogzstream & theErrorFile, CFullConnection & theConn
 	}
 }
 
+static std::string GetTemporaryFileName() {
+	std::string myFileName = tempfile::gettempdir() + "/cvc-XXXXXX";
+	mkstemp(&myFileName[0]); // Valid in C++11 or higher
+	return myFileName;
+}
+
 void CCvcDb::FindAllOverVoltageErrors() {
 	CFullConnection myConnections;
 	reportFile << "! Checking overvoltage errors" << endl << endl;
-	string myVbgErrorFileName(tmpnam(NULL));
+	string myVbgErrorFileName(GetTemporaryFileName());
 	ogzstream myVbgErrorFile(myVbgErrorFileName);
 	myVbgErrorFile << "! Checking Vbg overvoltage errors" << endl << endl;
-	string myVbsErrorFileName(tmpnam(NULL));
+	string myVbsErrorFileName(GetTemporaryFileName());
 	ogzstream myVbsErrorFile(myVbsErrorFileName);
 	myVbsErrorFile << "! Checking Vbs overvoltage errors" << endl << endl;
-	string myVdsErrorFileName(tmpnam(NULL));
+	string myVdsErrorFileName(GetTemporaryFileName());
 	ogzstream myVdsErrorFile(myVdsErrorFileName);
 	myVdsErrorFile << "! Checking Vds overvoltage errors" << endl << endl;
-	string myVgsErrorFileName(tmpnam(NULL));
+	string myVgsErrorFileName(GetTemporaryFileName());
 	ogzstream myVgsErrorFile(myVgsErrorFileName);
 	myVgsErrorFile << "! Checking Vgs overvoltage errors" << endl << endl;
-	string myModelErrorFileName(tmpnam(NULL));
+	string myModelErrorFileName(GetTemporaryFileName());
 	ogzstream myModelErrorFile(myModelErrorFileName);
 	myModelErrorFile << "! Checking Model errors" << endl << endl;
 

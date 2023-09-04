@@ -34,9 +34,9 @@ cvc_rv_SOURCES = cvc.cc Cvc.hh \
 	CvcMaps.cc CvcMaps.hh \
 	CVirtualNet.cc CVirtualNet.hh \
 	CCvcExceptions.hh CDependencyMap.hh CvcTypes.hh \
+	tempfile.hh \
 	exitfail.c exitfail.h \
 	gzstream.C gzstream.h \
-	obstack.c obstack.h \
 	resource.cc resource.hh \
 	utility.cc utility.h \
 	readline.h exit.h gettext.h \

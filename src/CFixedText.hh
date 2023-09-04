@@ -26,7 +26,7 @@
 
 #include "Cvc.hh"
 
-#include "obstack.h"
+#include <obstack.h>
 
 #define obstack_chunk_alloc xmalloc
 #define obstack_chunk_free free
